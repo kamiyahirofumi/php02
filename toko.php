@@ -42,7 +42,7 @@
                         <td>
                             <input type="radio" name="price" value="5000円以下" checked> 5000円以下
                             <input type="radio" name="price" value="5000円超～1万円以下"> 5000円超～1万円以下
-                            <input type="radio" name="price" value="1万円超"> 1万円超                <input type="radio" id="price"> その他
+                            <input type="radio" name="price" value="1万円超"> 1万円超                
                         </td>
                     </tr>
                     <tr>

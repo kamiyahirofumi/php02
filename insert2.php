@@ -12,12 +12,20 @@ $place = $_POST['place'];
 $comment = $_POST['comment'];
 
 //2. DB接続します
-try {
+include("funcs.php");
+$pdo = db_conn();
+
+
+// try {
     //Password:MAMP='root',XAMPP=''
-    $pdo = new PDO('mysql:dbname=xxx;charset=utf8;host=localhost','root','');
-  } catch (PDOException $e) {
-    exit('DBConnection Error:'.$e->getMessage());
-  }
+    // $pdo = new PDO('mysql:dbname=xxx;charset=utf8;host=localhost','root','');
+    // $pdo = new PDO('mysql:dbname=maroonjackal32_xxx;charset=utf8;host=mysql57.maroonjackal32.sakura.ne.jp','maroonjackal32','PASSWORD');
+
+  // } catch (PDOException $e) {
+  //   exit('DBConnection Error:'.$e->getMessage());
+  // }
+
+
   //３．データ登録SQL作成
   $stmt = $pdo->prepare("insert into xxx_table(contributor, occasion, price, restaurant, url, genre, place,comment, indate) values(:contributor, :occasion, :price, :restaurant, :url, :genre, :place, :comment, sysdate())");
   $stmt->bindValue(':contributor', $contributor, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
@@ -32,11 +40,12 @@ try {
   //４．データ登録処理後
   if($status==false){
     //SQL実行時にエラーがある場合（エラーオブジェクト取得して表示）
-    $error = $stmt->errorInfo();
-    exit("SQL_ERROR:".$error[2]);
+    sql_error($stmt);
   }else{
     //５．toko.phpへリダイレクト
-    header("Location: toko.php");
-    exit();
+    redirect("toko.php");
   }
+
+
+
   ?>

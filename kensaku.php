@@ -5,6 +5,7 @@ require_once("funcs.php");
 try {
   //Password:MAMP='root',XAMPP=''
   $pdo = new PDO('mysql:dbname=xxx;charset=utf8;host=localhost','root','');
+//   $pdo = new PDO('mysql:dbname=maroonjackal32_xxx;charset=utf8;host=mysql57.maroonjackal32.sakura.ne.jp','maroonjackal32','PASSWORD');
 } catch (PDOException $e) {
   exit('DBConnection Error:'.$e->getMessage());
 }
@@ -12,6 +13,8 @@ try {
 //２．データ登録SQL作成
 $stmt = $pdo->prepare("SELECT * FROM xxx_table");
 $status = $stmt->execute();
+
+
 
 //３．データ表示
 $view="";
@@ -24,6 +27,7 @@ if($status==false) {
   //Selectデータの数だけ自動でループしてくれる
   //FETCH_ASSOC=http://php.net/manual/ja/pdostatement.fetch.php
   while( $res = $stmt->fetch(PDO::FETCH_ASSOC)){
+
     $view .= "<tr>";
 
     $view .= "<td class = occasionRan>";
@@ -54,12 +58,31 @@ if($status==false) {
     $view .= h($res["contributor"]);
     $view .= "</td>";
 
-    $view .= "<td class = commentRan>";
-    $view .= h($res["comment"]);
+    // $view .= "<td class = commentRan>";
+    // $view .= h($res["comment"]);
+    // $view .= "</td>";
+
+
+    $view .= "<td>";
+        // $view .= '<a href="update.php">';
+        $view .= '<a>';
+        $view .= "[コメントを見る]";
+        $view .= '</a>';  
+
+        $view .= '<a href="detail.php?id='.h($res["id"]).'">';   
+        $view .= "[修正]";
+        $view .= '</a>';  
+
+        $view .= '<a href="delete.php?id='.h($res["id"]).'">';   
+        $view .= "[削除]";
+        $view .= '</a>';  
     $view .= "</td>";
 
     $view .= "</tr>";
-  }
+
+
+
+    }
 
 }
 ?>
@@ -73,6 +96,7 @@ if($status==false) {
 <title>検索</title>
 </head>
 <body id = kensakuBody>
+
     <header id = kensakuHeader>
         <a href="./top.php">TOP</a>
         <a href="./toko.php">投稿</a>
@@ -123,13 +147,14 @@ if($status==false) {
                 <th class = placeRan>場所</th>
                 <th class = urlRan>URL</th>
                 <th class = personRan>投稿者</th>
-                <th class = commentRan>コメント</th>
-                <!-- <th class = deleteBtnRan></th> -->
+                <!-- <th class = commentRan>コメント</th> -->
+                <th class = deleteBtnRan></th>
             </tr>
 
             <?=$view?>
         </table>
         </div>
+
 
 
 </body>

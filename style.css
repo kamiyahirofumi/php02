@@ -75,7 +75,7 @@ h1{
 }
 #contribution table td{
     font-size: large;
-    width: 80%;
+    width: 85%;
     text-align: left;
     border: solid 1px black;
     background-color: rgba(255,255,255,0.562);
@@ -148,7 +148,7 @@ h1{
     display:flex;
 }
 nav{
-    width: 120px;
+    width: 200px;
     text-align: center;
     font-size: small;
 }
@@ -167,8 +167,8 @@ select{
 #tableSpace{
     flex:1;
     height:400px;
-    /* overflow:auto; */
-    font-size: small;
+    overflow:auto;
+    /* font-size: small; */
 }
 /* #tableSpace th{
     position: sticky;
@@ -178,10 +178,10 @@ select{
 } */
 
 #serch table{
-    width: 99%;
+    width: 95%;
     /* table-layout: fixed; */
     /* font-size: large; */
-    text-align: left;
+    text-align: center;
     overflow:auto;
 }
 #serch table th{
@@ -193,7 +193,20 @@ select{
     background-color: rgba(255,255,255,0.562);
 }
 
-.occasionRan,
+#serch table tr{
+    /* font-size: large; */
+    vertical-align: top;
+    border: solid 1px black;
+    background-color: white;
+    padding-right: 20px;
+    background-color: rgba(255,255,255,0.562);
+}
+
+/* .urlRan{
+    width: 5px;    
+} */
+
+/* .occasionRan,
 .priceRan,
 .genreRan,
 .restaurantRan,
@@ -204,11 +217,7 @@ select{
     text-align: left;
     vertical-align: top;
     border: solid 1px black;
-    /* padding-right: 20px; */
     background-color: rgba(255,255,255,0.562);
-}
-.urlRan{
-    width: 1%;    
 }
 .priceRan{
     width: 8%;        
@@ -221,7 +230,7 @@ select{
 }
 .commentRan{
     width: 30%;    
-}
+} */
 
 /* .deleteRan{
     text-align: left;
